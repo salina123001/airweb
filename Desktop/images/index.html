@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenAir - 專業空調解決方案提供商</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F52BA',
+                        secondary: '#34D399',
+                        neutral: {
+                            100: '#F3F4F6',
+                            200: '#E5E7EB',
+                            300: '#D1D5DB',
+                            400: '#9CA3AF',
+                            500: '#6B7280',
+                            600: '#4B5563',
+                            700: '#374151',
+                            800: '#1F2937',
+                            900: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            }
+            .transition-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .hover-scale {
+                transition: transform 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: scale(1.03);
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+            .bg-gradient-custom {
+                background: linear-gradient(120deg, #0F52BA, #165DFF);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter text-neutral-800 bg-white scroll-smooth">
+    <!-- 導航欄 -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="#home" class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                    <i class="fa fa-snowflake-o text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold text-white text-shadow">GreenAir</span>
+            </a>
+            
+            <!-- 桌面導航 -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-white hover:text-secondary transition-colors font-medium">首頁</a>
+                <a href="#residential" class="text-white hover:text-secondary transition-colors font-medium">家用/商用空調</a>
+                <a href="#idc" class="text-white hover:text-secondary transition-colors font-medium">IDC精密空調</a>
+                <a href="#design" class="text-white hover:text-secondary transition-colors font-medium">建築與室內設計</a>
+                <a href="#contact" class="text-white hover:text-secondary transition-colors font-medium">聯絡我們</a>
+                <a href="#contact" class="bg-secondary hover:bg-secondary/90 text-white px-6 py-2 rounded-full transition-all hover:shadow-lg">
+                    立即諮詢
+                </a>
+            </nav>
+            
+            <!-- 手機導航按鈕 -->
+            <button id="menu-toggle" class="md:hidden text-white text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- 手機導航菜單 -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full transform -translate-y-full opacity-0 transition-all duration-300 pointer-events-none">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#home" class="text-neutral-800 hover:text-primary transition-colors font-medium py-2 border-b border-neutral-200">首頁</a>
+                <a href="#residential" class="text-neutral-800 hover:text-primary transition-colors font-medium py-2 border-b border-neutral-200">家用/商用空調</a>
+                <a href="#idc" class="text-neutral-800 hover:text-primary transition-colors font-medium py-2 border-b border-neutral-200">IDC精密空調</a>
+                <a href="#design" class="text-neutral-800 hover:text-primary transition-colors font-medium py-2 border-b border-neutral-200">建築與室內設計</a>
+                <a href="#contact" class="text-neutral-800 hover:text-primary transition-colors font-medium py-2">聯絡我們</a>
+                <a href="#contact" class="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-full transition-all hover:shadow-lg text-center">
+                    立即諮詢
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首頁 Hero 區域 -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-neutral-900/70 to-neutral-900/50 z-10"></div>
+            <img src="https://picsum.photos/id/1067/1920/1080" alt="現代化空調系統展示" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="container mx-auto px-4 z-20 text-center">
+            <h1 class="text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-white leading-tight text-shadow-lg mb-6 animate-fade-in">
+                創造舒適空間<br>
+                <span class="text-secondary">引領綠色未來</span>
+            </h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 max-w-3xl mx-auto mb-10 text-shadow">
+                GreenAir 提供全方位空調解決方案，融合創新科技與節能設計，為您打造恆溫舒適的生活與工作環境。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#residential" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full transition-all hover:shadow-lg text-lg font-medium">
+                    探索服務
+                </a>
+                <a href="#contact" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full transition-all hover:shadow-lg text-lg font-medium">
+                    聯絡我們
+                </a>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#services" class="text-white/80 hover:text-white">
+                    <i class="fa fa-angle-down text-3xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服務導覽區 -->
+    <section id="services" class="py-20 bg-neutral-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-neutral-800 mb-4">
+                    全方位空調解決方案
+                </h2>
+                <p class="text-neutral-600 max-w-2xl mx-auto text-lg">
+                    我們提供從家用到商用的完整空調系統，以及整合式空間設計服務，為您創造最佳的室內環境。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 家用/商用空調 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1048/800/600" alt="家用與商用空調系統" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent flex items-end">
+                            <h3 class="text-2xl font-bold text-white p-6">家用/商用空調</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-neutral-600 mb-4">
+                            提供高效能、低噪音的空調設備，涵蓋分離式、中央空調等多種選擇，適用於住宅、公寓、商辦空間與店面。
+                        </p>
+                        <div class="flex items-center text-primary font-medium">
+                            <a href="#residential" class="hover:underline">了解更多</a>
+                            <i class="fa fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- IDC精密空調 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/160/800/600" alt="IDC精密空調系統" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent flex items-end">
+                            <h3 class="text-2xl font-bold text-white p-6">IDC精密空調</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-neutral-600 mb-4">
+                            為機房、實驗室與醫療設施提供恆溫恆濕的精密空調系統，具備遠端監控與故障預警功能，保障設備穩定運作。
+                        </p>
+                        <div class="flex items-center text-primary font-medium">
+                            <a href="#idc" class="hover:underline">了解更多</a>
+                            <i class="fa fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 建築與室內設計 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1060/800/600" alt="建築與室內設計服務" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent flex items-end">
+                            <h3 class="text-2xl font-bold text-white p-6">建築與室內設計</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-neutral-600 mb-4">
+                            整合空調系統與空間設計，提供節能環保、符合動線美學的一體化解決方案，從諮詢到施工全程服務。
+                        </p>
+                        <div class="flex items-center text-primary font-medium">
+                            <a href="#design" class="hover:underline">了解更多</a>
+                            <i class="fa fa-arrow-right ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精選案例 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-neutral-800 mb-4">
+                    精選案例作品
+                </h2>
+                <p class="text-neutral-600 max-w-2xl mx-auto text-lg">
+                    探索我們的代表性項目，了解我們如何為不同場景提供定制化的空調解決方案。
+                </p>
+            </div>
+            
+            <div class="relative">
+                <div id="carousel" class="flex overflow-x-hidden">
+                    <div class="carousel-track flex transition-transform duration-500">
+                        <!-- 案例 1 -->
+                        <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.333%] p-4">
+                            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img src="https://picsum.photos/id/1060/800/600" alt="豪華住宅空調系統" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                        <div class="p-6">
+                                            <h3 class="text-xl font-bold text-white mb-2">高級住宅中央空調系統</h3>
+                                            <p class="text-white/90">台北市信義區</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">家用空調</span>
+                                        <span class="text-neutral-500 text-sm">2024</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-neutral-800 mb-2">豪華住宅空調系統</h3>
+                                    <p class="text-neutral-600">
+                                        為500坪豪宅設計的隱藏式中央空調系統，結合智慧控制與節能技術，創造無噪音的舒適居住環境。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 案例 2 -->
+                        <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.333%] p-4">
+                            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img src="https://picsum.photos/id/160/800/600" alt="企業數據中心精密空調" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                        <div class="p-6">
+                                            <h3 class="text-xl font-bold text-white mb-2">企業數據中心精密空調系統</h3>
+                                            <p class="text-white/90">新北市板橋區</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">IDC精密空調</span>
+                                        <span class="text-neutral-500 text-sm">2023</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-neutral-800 mb-2">企業數據中心精密空調</h3>
+                                    <p class="text-neutral-600">
+                                        為跨國企業2000坪數據中心設計的恆溫恆濕精密空調系統，確保IT設備穩定運行，節能效率提升30%。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 案例 3 -->
+                        <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.333%] p-4">
+                            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img src="https://picsum.photos/id/1048/800/600" alt="商業大樓空調系統" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                        <div class="p-6">
+                                            <h3 class="text-xl font-bold text-white mb-2">商業大樓空調系統整合設計</h3>
+                                            <p class="text-white/90">桃園市中壢區</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">商用空調</span>
+                                        <span class="text-neutral-500 text-sm">2024</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-neutral-800 mb-2">商業大樓空調系統</h3>
+                                    <p class="text-neutral-600">
+                                        為12層商業大樓設計的中央空調系統，整合樓宇自動化控制，提供舒適的工作環境，節能效果顯著。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 案例 4 -->
+                        <div class="carousel-slide min-w-full md:min-w-[50%] lg:min-w-[33.333%] p-4">
+                            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                                <div class="relative h-64 overflow-hidden">
+                                    <img src="https://picsum.photos/id/1067/800/600" alt="醫院手術室精密空調" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                        <div class="p-6">
+                                            <h3 class="text-xl font-bold text-white mb-2">醫院手術室精密空調系統</h3>
+                                            <p class="text-white/90">台中市西屯區</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">精密空調</span>
+                                        <span class="text-neutral-500 text-sm">2023</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-neutral-800 mb-2">醫院手術室精密空調</h3>
+                                    <p class="text-neutral-600">
+                                        為醫院手術室和重症監護室設計的精密空調系統，確保恆定的溫濕度和空氣品質，符合醫療級標準。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 輪播控制按鈕 -->
+                <button id="prev-btn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md z-10 transition-all">
+                    <i class="fa fa-angle-left text-xl"></i>
+                </button>
+                <button id="next-btn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md z-10 transition-all">
+                    <i class="fa fa-angle-right text-xl"></i>
+                </button>
+                
+                <!-- 指示器 -->
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-primary/30 hover:bg-primary/50 focus:outline-none transition-all active"></button>
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-primary/30 hover:bg-primary/50 focus:outline-none transition-all"></button>
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-primary/30 hover:bg-primary/50 focus:outline-none transition-all"></button>
+                    <button class="carousel-indicator w-3 h-3 rounded-full bg-primary/30 hover:bg-primary/50 focus:outline-none transition-all"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 品牌優勢 -->
+    <section class="py-20 bg-gradient-custom text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold mb-4">
+                    為什麼選擇 GreenAir
+                </h2>
+                <p class="text-white/80 max-w-2xl mx-auto text-lg">
+                    我們的核心優勢使我們成為空調解決方案的首選品牌
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 優勢 1 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover-scale">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-leaf text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">節能環保</h3>
+                    <p class="text-white/80">
+                        採用先進的節能技術，降低能源消耗，符合環保標準，為您節省運營成本的同時，也為地球盡一份心力。
+                    </p>
+                </div>
+                
+                <!-- 優勢 2 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover-scale">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">高效性能</h3>
+                    <p class="text-white/80">
+                        我們的空調系統具備快速降溫、恆溫恆濕控制能力，確保舒適的室內環境，即使在炎熱的夏季也能保持涼爽。
+                    </p>
+                </div>
+                
+                <!-- 優勢 3 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover-scale">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-cogs text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">技術創新</h3>
+                    <p class="text-white/80">
+                        不斷投入研發，引進國際先進技術，提供智慧控制、遠端監控等功能，讓空調系統更加智能化、人性化。
+                    </p>
+                </div>
+                
+                <!-- 優勢 4 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 hover-scale">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-clock-o text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">完善服務</h3>
+                    <p class="text-white/80">
+                        提供從諮詢、設計、安裝到維修保養的一條龍服務，24小時應急支援，讓您無後顧之憂。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 節能效果數據 -->
+            <div class="mt-16 bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">我們的節能成效</h3>
+                        <p class="text-white/80 mb-6">
+                            GreenAir 的空調系統平均能為客戶節省30%以上的能源消耗，以下是我們近三年的節能數據統計：
+                        </p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>2023年</span>
+                                    <span>38%</span>
+                                </div>
+                                <div class="w-full bg-white/20 rounded-full h-2">
+                                    <div class="bg-secondary h-2 rounded-full" style="width: 38%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>2022年</span>
+                                    <span>34%</span>
+                                </div>
+                                <div class="w-full bg-white/20 rounded-full h-2">
+                                    <div class="bg-secondary h-2 rounded-full" style="width: 34%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>2021年</span>
+                                    <span>31%</span>
+                                </div>
+                                <div class="w-full bg-white/20 rounded-full h-2">
+                                    <div class="bg-secondary h-2 rounded-full" style="width: 31%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <canvas id="energyChart" width="400" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客戶評價 -->
+    <section class="py-20 bg-neutral-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-neutral-800 mb-4">
+                    客戶的聲音
+                </h2>
+                <p class="text-neutral-600 max-w-2xl mx-auto text-lg">
+                    看看我們的客戶如何評價 GreenAir 的服務和產品
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 評價 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="text-primary">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-neutral-500">5.0</span>
+                    </div>
+                    <p class="text-neutral-600 mb-6 italic">
+                        "GreenAir 為我們公司的數據中心提供了精密空調系統，安裝過程專業高效，系統運行穩定，節能效果顯著，大幅降低了我們的運營成本。"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/1005/100/100" alt="陳總經理" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-neutral-800">陳建宏</h4>
+                            <p class="text-neutral-500 text-sm">科技公司 總經理</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 評價 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="text-primary">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <span class="ml-2 text-neutral-500">5.0</span>
+                    </div>
+                    <p class="text-neutral-600 mb-6 italic">
+                        "我家使用 GreenAir 的中央空調系統已經三年了，安靜、涼快、省電，服務也非常好，定期維護從不間斷。推薦給所有注重生活品質的朋友！"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/1006/100/100" alt="林小姐" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-neutral-800">林美玲</h4>
+                            <p class="text-neutral-500 text-sm">住宅客戶</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 評價 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-scale">
+                    <div class="flex items-center mb-6">
+                        <div class="text-primary">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        <span class="ml-2 text-neutral-500">4.5</span>
+                    </div>
+                    <p class="text-neutral-600 mb-6 italic">
+                        "GreenAir 為我們的連鎖店提供了整體空調解決方案，從設計到安裝都非常專業，系統運行一年多來沒有任何問題，節能效果超出預期。"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/id/1012/100/100" alt="黃先生" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-bold text-neutral-800">黃志偉</h4>
+                            <p class="text-neutral-500 text-sm">連鎖企業 營運長</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 合作夥伴 -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-bold text-neutral-800 text-center mb-12">合作夥伴</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                    <div class="flex justify-center">
+                        <img src="https://picsum.photos/id/180/200/80" alt="合作夥伴1" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://picsum.photos/id/190/200/80" alt="合作夥伴2" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://picsum.photos/id/200/200/80" alt="合作夥伴3" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://picsum.photos/id/210/200/80" alt="合作夥伴4" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://picsum.photos/id/220/200/80" alt="合作夥伴5" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://picsum.photos/id/230/200/80" alt="合作夥伴6" class="h-12 opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 家用/商用空調服務 -->
+    <section id="residential" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <span class="text-primary font-medium">我們的服務</span>
+                    <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-neutral-800 mt-2 mb-6">
+                        家用/商用空調
+                    </h2>
+                    <p class="text-neutral-600 mb-8 text-lg">
+                        不論是住宅、公寓，還是商辦空間與店面，GreenAir 都能提供最適合的空調解決方案，讓您的空間恆溫舒適。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-wrench text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">全方位服務</h3>
+                                <p class="text-neutral-600">
+                                    提供空調系統的安裝、維修、保養與升級服務，由專業技術團隊為您打造舒適空間。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-th-large text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">多樣化機型</h3>
+                                <p class="text-neutral-600">
+                                    涵蓋分離式空調、中央空調、商用空調等多種機型，根據不同空間需求提供最佳選擇。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-home text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">適用各種場景</h3>
+                                <p class="text-neutral-600">
+                                    不論是小型住宅、高級公寓，還是商務辦公室、零售店面，我們都能提供定制化的解決方案。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block mt-10 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full transition-all hover:shadow-lg font-medium">
+                        立即諮詢
+                    </a>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="rounded-xl overflow-hidden hover-scale">
+                            <img src="https://picsum.photos/id/1048/600/800" alt="住宅空調系統" class="w-full h-full object-cover">
+                        </div>
+                        <div class="grid grid-rows-2 gap-4">
+                            <div class="rounded-xl overflow-hidden hover-scale">
+                                <img src="https://picsum.photos/id/1060/600/400" alt="商用空調系統" class="w-full h-full object-cover">
+                            </div>
+                            <div class="rounded-xl overflow-hidden hover-scale">
+                                <img src="https://picsum.photos/id/1070/600/400" alt="空調設備安裝" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IDC精密空調系統 -->
+    <section id="idc" class="py-20 bg-neutral-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 order-2 md:order-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="rounded-xl overflow-hidden hover-scale">
+                            <img src="https://picsum.photos/id/160/600/800" alt="數據中心精密空調" class="w-full h-full object-cover">
+                        </div>
+                        <div class="grid grid-rows-2 gap-4">
+                            <div class="rounded-xl overflow-hidden hover-scale">
+                                <img src="https://picsum.photos/id/180/600/400" alt="精密空調控制系統" class="w-full h-full object-cover">
+                            </div>
+                            <div class="rounded-xl overflow-hidden hover-scale">
+                                <img src="https://picsum.photos/id/190/600/400" alt="實驗室空調系統" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <span class="text-primary font-medium">我們的服務</span>
+                    <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-neutral-800 mt-2 mb-6">
+                        IDC精密空調系統
+                    </h2>
+                    <p class="text-neutral-600 mb-8 text-lg">
+                        為機房、實驗室與醫療設施提供專業的精密空調解決方案，確保設備穩定運行與環境安全。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-thermometer-half text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">恆溫恆濕控制</h3>
+                                <p class="text-neutral-600">
+                                    精準控制環境溫度與濕度，為精密設備提供穩定的運行環境，延長設備使用壽命。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-desktop text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">遠端監控系統</h3>
+                                <p class="text-neutral-600">
+                                    提供24小時遠端監控與警報功能，實時掌握系統運行狀態，預防故障發生。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-cogs text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">智能節能技術</h3>
+                                <p class="text-neutral-600">
+                                    採用智能控制與節能技術，在保證設備正常運行的同時，降低能源消耗與運營成本。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block mt-10 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full transition-all hover:shadow-lg font-medium">
+                        立即諮詢
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 建築與室內設計 -->
+    <section id="design" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <span class="text-primary font-medium">我們的服務</span>
+                    <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-neutral-800 mt-2 mb-6">
+                        建築與室內設計
+                    </h2>
+                    <p class="text-neutral-600 mb-8 text-lg">
+                        整合空調系統與空間設計，提供從諮詢、設計到施工的一條龍服務，打造美觀與實用兼具的空間。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-paint-brush text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">一體化設計</h3>
+                                <p class="text-neutral-600">
+                                    將空調系統與室內設計完美融合，考慮美學與實用性，創造舒適且具有設計感的空間。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-leaf text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">節能環保理念</h3>
+                                <p class="text-neutral-600">
+                                    在設計過程中融入節能環保理念，選擇環保材料，優化空間布局，降低能源消耗。
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-users text-primary"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold text-neutral-800 mb-2">全程服務</h3>
+                                <p class="text-neutral-600">
+                                    提供從初步諮詢、方案設計、施工到售後維護的全程服務，確保專案順利完成。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block mt-10 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full transition-all hover:shadow-lg font-medium">
+                        立即諮詢
+                    </a>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="rounded-xl overflow-hidden hover-scale">
+                            <img src="https://picsum.photos/id/1060/600/800" alt="室內空間設計" class="w-full h-full object-cover">
+                        </div>
+                        <div class="grid grid-rows-2 gap-4">
+                            <div class="rounded-xl overflow-hidden hover-scale">
+                                <img src="https://picsum.photos/id/1076/600/400" alt="空調系統與室內設計整合" class="w-full h-full object-cover">
+                            </div>
+                            <div class="rounded-xl overflow-hidden hover-scale">
+                                <img src="https://picsum.photos/id/1080/600/400" alt="商業空間設計" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡我們 -->
+    <section id="contact" class="py-20 bg-neutral-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-neutral-800 mb-4">
+                    聯絡我們
+                </h2>
+                <p class="text-neutral-600 max-w-2xl mx-auto text-lg">
+                    填寫以下表單或透過下方聯絡方式與我們取得聯繫，我們將盡快為您提供專業服務。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white rounded-xl shadow-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold text-neutral-800 mb-6">
+                            聯繫表單
+                        </h3>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-neutral-700 font-medium mb-2">姓名</label>
+                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="請輸入您的姓名" required>
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-neutral-700 font-medium mb-2">電話</label>
+                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="請輸入您的電話" required>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-neutral-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="請輸入您的 Email" required>
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block text-neutral-700 font-medium mb-2">服務類型</label>
+                                <select id="service" name="service" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" required>
+                                    <option value="" disabled selected>請選擇服務類型</option>
+                                    <option value="residential">家用/商用空調</option>
+                                    <option value="idc">IDC精密空調</option>
+                                    <option value="design">建築與室內設計</option>
+                                    <option value="maintenance">空調維修保養</option>
+                                    <option value="other">其他服務</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-neutral-700 font-medium mb-2">留言</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="請輸入您的需求或問題" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all hover:shadow-lg font-medium">
+                                提交表單
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white rounded-xl shadow-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold text-neutral-800 mb-6">
+                            聯絡資訊
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa fa-map-marker text-primary"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-bold text-neutral-800 mb-1">地址</h4>
+                                    <p class="text-neutral-600">
+                                        104台北市中山區南京東路三段123號45樓
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa fa-phone text-primary"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-bold text-neutral-800 mb-1">電話</h4>
+                                    <p class="text-neutral-600">
+                                        (02) 1234-5678
+                                    </p>
+                                    <p class="text-neutral-600">
+                                        服務專線: 0800-123-456
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa fa-envelope text-primary"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-bold text-neutral-800 mb-1">Email</h4>
+                                    <p class="text-neutral-600">
+                                        service@greenair.com.tw
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa fa-clock-o text-primary"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-bold text-neutral-800 mb-1">服務時間</h4>
+                                    <p class="text-neutral-600">
+                                        週一至週五: 9:00 - 18:00
+                                    </p>
+                                    <p class="text-neutral-600">
+                                        週六: 9:00 - 12:00
+                                    </p>
+                                    <p class="text-neutral-600">
+                                        週日及國定假日: 休息
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="text-lg font-bold text-neutral-800 mb-4">
+                                追蹤我們
+                            </h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-[#3b5998] hover:bg-[#3b5998]/90 text-white rounded-full flex items-center justify-center transition-all">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-[#0077b5] hover:bg-[#0077b5]/90 text-white rounded-full flex items-center justify-center transition-all">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-[#0088cc] hover:bg-[#0088cc]/90 text-white rounded-full flex items-center justify-center transition-all">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-[#dd4b39] hover:bg-[#dd4b39]/90 text-white rounded-full flex items-center justify-center transition-all">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="text-lg font-bold text-neutral-800 mb-4">
+                                地圖位置
+                            </h4>
+                            <div class="h-64 rounded-lg overflow-hidden bg-neutral-200">
+                                <!-- 地圖嵌入位置 -->
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.5772078000157!2d121.54730141547227!3d25.044234383977413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a97b8d536c0f%3A0x633c0c34296d6c67!2z5Y-w5YyX5biC5aSn6Ziq5p6X5p2l!5e0!3m2!1szh-TW!2stw!4v1627863124517!5m2!1szh-TW!2stw" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ 部分 -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-neutral-800 mb-4">
+                    常見問題
+                </h2>
+                <p class="text-neutral-600 max-w-2xl mx-auto text-lg">
+                    以下是客戶常問的問題，如果您有其他疑問，請隨時聯繫我們。
+                </p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-6">
+                    <!-- FAQ 項目 1 -->
+                    <div class="border border-neutral-200 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="text-lg font-bold text-neutral-800">空調系統多久需要維護一次？</span>
+                            <i class="fa fa-plus text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-6 bg-neutral-50 border-t border-neutral-200">
+                            <p class="text-neutral-600">
+                                一般建議每年至少進行一次全面的維護保養，包括清洗過濾網、檢查冷媒系統、電氣系統及機械部件等。對於商業用途或使用頻率較高的空調系統，建議每半年進行一次維護。定期維護可以確保系統高效運行，延長設備壽命，節省能源消耗。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 項目 2 -->
+                    <div class="border border-neutral-200 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="text-lg font-bold text-neutral-800">如何選擇適合我家的空調系統？</span>
+                            <i class="fa fa-plus text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-6 bg-neutral-50 border-t border-neutral-200">
+                            <p class="text-neutral-600">
+                                選擇適合的空調系統需要考慮多個因素，包括房間面積、高度、朝向、隔熱效果、使用人數及用途等。我們的專業技術人員可以提供免費的現場評估，根據您的具體需求和環境條件，推薦最適合的空調系統，並提供詳細的方案和報價。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 項目 3 -->
+                    <div class="border border-neutral-200 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="text-lg font-bold text-neutral-800">精密空調與普通空調有什麼區別？</span>
+                            <i class="fa fa-plus text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-6 bg-neutral-50 border-t border-neutral-200">
+                            <p class="text-neutral-600">
+                                精密空調與普通空調的主要區別在於控制精度、可靠性和適用場景。精密空調可以精準控制溫度和濕度（通常可達±0.5°C和±3%RH），適用於對環境要求嚴格的場所，如機房、實驗室、醫療設施等。而普通空調主要用於提供舒適的人體環境，控制精度較低。此外，精密空調通常具有更高的可靠性、更長的運行時間和更完善的監控系統。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 項目 4 -->
+                    <div class="border border-neutral-200 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="text-lg font-bold text-neutral-800">安裝空調需要注意哪些事項？</span>
+                            <i class="fa fa-plus text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-6 bg-neutral-50 border-t border-neutral-200">
+                            <p class="text-neutral-600">
+                                空調安裝的正確與否直接影響到使用效果和壽命。安裝前需要考慮機器的位置、排水系統、電源供應、管路走向等因素。建議由專業技術人員進行安裝，確保安裝過程符合規範和安全標準。我們的安裝團隊都經過嚴格培訓，具備豐富的安裝經驗，能夠提供高品質的安裝服務。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 項目 5 -->
+                    <div class="border border-neutral-200 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                            <span class="text-lg font-bold text-neutral-800">空調系統的使用壽命大概是多久？</span>
+                            <i class="fa fa-plus text-primary transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden p-6 bg-neutral-50 border-t border-neutral-200">
+                            <p class="text-neutral-600">
+                                空調系統的使用壽命受多種因素影響，包括品牌、質量、使用環境、使用頻率及維護保養等。一般來說，家用空調的使用壽命約為10-15年，商用空調約為8-12年，而精密空調的使用壽命可能長達15-20年。定期的維護保養可以顯著延長空調系統的使用壽命，同時保持其高效運行。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="bg-neutral-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                            <i class="fa fa-snowflake-o text-primary text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">GreenAir</span>
+                    </div>
+                    <p class="text-neutral-400 mb-6">
+                        GreenAir 是一家專業的空調解決方案提供商，致力於為客戶創造舒適、健康、節能的室內環境。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-white transition-colors">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">服務項目</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#residential" class="text-neutral-400 hover:text-white transition-colors">家用/商用空調</a></li>
+                        <li><a href="#idc" class="text-neutral-400 hover:text-white transition-colors">IDC精密空調</a></li>
+                        <li><a href="#design" class="text-neutral-400 hover:text-white transition-colors">建築與室內設計</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">空調維修保養</a></li>
+                        <li><a href="#" class="text-neutral-400 hover:text-white transition-colors">空調系統升級</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">快速連結</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-neutral-400 hover:text-white transition-colors">首頁</a></li>
+                        <li><a href="#residential" class="text-neutral-400 hover:text-white transition-colors">家用/商用空調</a></li>
+                        <li><a href="#idc" class="text-neutral-400 hover:text-white transition-colors">IDC精密空調</a></li>
+                        <li><a href="#design" class="text-neutral-400 hover:text-white transition-colors">建築與室內設計</a></li>
+                        <li><a href="#contact" class="text-neutral-400 hover:text-white transition-colors">聯絡我們</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">聯絡資訊</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+                            <span class="text-neutral-400">104台北市中山區南京東路三段123號45樓</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-phone text-primary mt-1 mr-3"></i>
+                            <span class="text-neutral-400">(02) 1234-5678</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-neutral-400">service@greenair.com.tw</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-clock-o text-primary mt-1 mr-3"></i>
+                            <span class="text-neutral-400">週一至週五: 9:00 - 18:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-neutral-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-neutral-500 text-sm">
+                    &copy; 2025 GreenAir 空調系統. 保留所有權利.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors">隱私政策</a>
+                    <a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors">服務條款</a>
+                    <a href="#" class="text-neutral-500 hover:text-white text-sm transition-colors">網站地圖</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回頂部按鈕 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 pointer-events-none z-50">
+        <i class="fa fa-angle-up text-xl"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 導航欄滾動效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-transparent');
+                document.querySelectorAll('#navbar a').forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-neutral-800');
+                });
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-transparent');
+                document.querySelectorAll('#navbar a:not(.bg-secondary)').forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-neutral-800');
+                });
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+        
+        // 手機菜單切換
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            if (mobileMenu.classList.contains('opacity-0')) {
+                mobileMenu.classList.remove('opacity-0', '-translate-y-full', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                menuToggle.innerHTML = '<i class="fa fa-times"></i>';
+            } else {
+                mobileMenu.classList.add('opacity-0', '-translate-y-full', 'pointer-events-none');
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                menuToggle.innerHTML = '<i class="fa fa-bars"></i>';
+            }
+        });
+        
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 關閉手機菜單
+                if (!mobileMenu.classList.contains('opacity-0')) {
+                    mobileMenu.classList.add('opacity-0', '-translate-y-full', 'pointer-events-none');
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                    menuToggle.innerHTML = '<i class="fa fa-bars"></i>';
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 返回頂部按鈕
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // FAQ 切換
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-45');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('rotate-45');
+                }
+            });
+        });
+        
+        // 輪播控制
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        let currentIndex = 0;
+        let slideWidth;
+        let slidesPerView;
+        
+        function updateCarouselDimensions() {
+            if (window.innerWidth < 768) {
+                slidesPerView = 1;
+            } else if (window.innerWidth < 1024) {
+                slidesPerView = 2;
+            } else {
+                slidesPerView = 3;
+            }
+            
+            slideWidth = track.clientWidth / slidesPerView;
+            updateCarousel();
+        }
+        
+        function updateCarousel() {
+            // 調整每個幻燈片的寬度
+            slides.forEach(slide => {
+                slide.style.minWidth = `${slideWidth}px`;
+            });
+            
+            // 移動軌道
+            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            
+            // 更新指示器
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('bg-primary');
+                    indicator.classList.remove('bg-primary/30');
+                } else {
+                    indicator.classList.remove('bg-primary');
+                    indicator.classList.add('bg-primary/30');
+                }
+            });
+        }
+        
+        // 初始化輪播尺寸
+        updateCarouselDimensions();
+        
+        // 窗口大小改變時更新輪播尺寸
+        window.addEventListener('resize', updateCarouselDimensions);
+        
+        // 下一張幻燈片
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < slides.length - slidesPerView) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        });
+        
+        // 上一張幻燈片
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = slides.length - slidesPerView;
+            }
+            updateCarousel();
+        });
+        
+        // 指示器點擊
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+        
+        // 自動輪播
+        setInterval(() => {
+            if (currentIndex < slides.length - slidesPerView) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        }, 5000);
+        
+        // 表單提交
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 這裡可以添加表單驗證和提交邏輯
+            alert('表單已提交，我們將儘快與您聯繫！');
+            contactForm.reset();
+        });
+        
+        // 節能效果圖表
+        const ctx = document.getElementById('energyChart').getContext('2d');
+        const energyChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2021年', '2022年', '2023年'],
+                datasets: [{
+                    label: '節能效果 (%)',
+                    data: [31, 34, 38],
+                    backgroundColor: [
+                        'rgba(52, 211, 153, 0.7)',
+                        'rgba(52, 211, 153, 0.8)',
+                        'rgba(52, 211, 153, 0.9)'
+                    ],
+                    borderColor: [
+                        'rgba(52, 211, 153, 1)',
+                        'rgba(52, 211, 153, 1)',
+                        'rgba(52, 211, 153, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 50,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+    
