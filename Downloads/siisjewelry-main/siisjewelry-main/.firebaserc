@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "siis-jewelry-5c370"
+  },
+  "targets": {
+    "siis-jewelry-5c370": {
+      "hosting": {
+        "admin": [
+          "siis-admin"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
