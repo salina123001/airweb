@@ -1,5 +1,0 @@
-{
-  "name": "SiiS Jewelry - AI 水晶顧問",
-  "description": "一個優雅的水晶飾品電商網站，結合了 Gemini AI 技術，提供專業的水晶選購建議。此版本已根據您的要求進行了優化，將靜態 HTML 轉換為功能齊全的 React 應用程式，並正確集成了 Gemini API 以驅動 AI 水晶顧問功能。",
-  "requestFramePermissions": []
-}
