@@ -3,560 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>巃建築師事務所 - 專業建築設計與AI輔助規劃</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        // Tailwind 配置
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2A4365', // 深藍色 - 專業穩重
-                        secondary: '#9F7AEA', // 紫羅蘭色 - 創新科技感
-                        neutral: '#F7FAFC', // 淺灰色 - 背景
-                        dark: '#1A202C', // 深灰色 - 文字
-                        accent: '#3182CE' // 強調色 - 亮藍
-                    },
-                    fontFamily: {
-                        sans: ['Noto Sans TC', 'sans-serif'],
-                        display: ['Noto Serif TC', 'serif'], // 展示用襯線字體
-                    },
-                }
-            }
+    <title>long.architecture studio | 巃.建築設計事務所</title>
+    <style>
+        /* 全域重置與基礎設定 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            letter-spacing: 0.05em; /* 全域文字呼吸感 */
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
+
+        body {
+            background-color: #FFFFFF;
+            color: #333333; /* 深灰文字 */
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            transition: opacity 0.4s ease;
+        }
+
+        img:hover {
+            opacity: 0.85; /* 圖片hover淡入淡出效果 */
+        }
+
+        /* 容器 */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 4vw;
+        }
+
+        /* Header 導航區 */
+        header {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            flex: 1;
+        }
+
+        .brand h1 {
+            font-size: 1.8rem;
+            font-weight: 200; /* 細體字 */
+            color: #333;
+        }
+
+        .brand p {
+            font-size: 10px;
+            letter-spacing: 0.6em; /* 極寬字距 */
+            margin-top: 0.5rem;
+            color: #555;
+            text-indent: 0.6em; /* 補償首字間距 */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* Hero Section 視覺首頁 */
+        .hero {
+            height: 80vh;
+            margin-bottom: 12rem;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Projects 作品集區 */
+        .projects {
+            margin-bottom: 12rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 6vw; /* 大量白色邊距 */
+        }
+
+        .project-item {
+            cursor: pointer;
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .project-item p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #444;
+        }
+
+        /* AI Lab 區塊 */
+        .ai-lab {
+            margin-bottom: 12rem;
+            padding: 8rem 0;
+            position: relative;
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+
+        .ai-lab::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1617097431754-1f502be22859?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15; /* 半透明科技感背景 */
+            z-index: 0;
+        }
+
+        .ai-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .ai-content h2 {
+            font-size: 2rem;
+            font-weight: 200;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .ai-content p {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .ai-btn {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 300;
+            padding: 1rem 2rem;
+            border: 1px solid #333; /* 細線框按鈕 */
+            transition: all 0.3s ease;
+        }
+
+        .ai-btn:hover {
+            background-color: #333;
+            color: #fff;
+            opacity: 1;
+        }
+
+        /* Footer 聯繫區 */
+        footer {
+            padding: 6rem 0 3rem;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: 200;
+            margin-top: 2rem;
+        }
+
+        /* 響應式設計 - 手機端 */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
             }
-            .shadow-custom {
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+            nav ul {
+                gap: 1.5rem;
             }
-            .shadow-hover {
-                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+            .hero {
+                height: 60vh;
+                margin-bottom: 6rem;
             }
-            .transition-custom {
-                transition: all 0.3s ease-in-out;
+
+            .projects {
+                margin-bottom: 6rem;
             }
-            .scale-hover {
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
             }
-            .scale-hover:hover {
-                transform: translateY(-5px);
+
+            .project-item img {
+                height: 300px;
             }
-            .text-gradient {
-                background-clip: text;
-                -webkit-background-clip: text;
-                color: transparent;
-                background-image: linear-gradient(to right, #2A4365, #3182CE);
+
+            .ai-lab {
+                padding: 4rem 0;
+                margin-bottom: 6rem;
+            }
+
+            .ai-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            footer {
+                padding: 4rem 0 2rem;
             }
         }
     </style>
-    <!-- 引入台灣正體中文字型 -->
+    <!-- 引入Google字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Noto+Sans+TC:wght@200;300;400&display=swap" rel="stylesheet">
 </head>
-<body class="font-sans bg-neutral text-dark">
-    <!-- 導航欄 -->
-    <nav id="navbar" class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-custom">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-2">
-                <!-- 更有設計感的品牌字體 -->
-                <span class="font-display text-2xl font-bold text-gradient">巃建築師事務所</span>
-            </a>
-            
-            <!-- 桌面導航 -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-dark hover:text-accent transition-custom font-medium">首頁</a>
-                <a href="#portfolio" class="text-dark hover:text-accent transition-custom font-medium">作品展示</a>
-                <a href="#about" class="text-dark hover:text-accent transition-custom font-medium">關於我們</a>
-                <a href="#contact" class="text-dark hover:text-accent transition-custom font-medium">聯繫我們</a>
+<body>
+    <!-- 容器 -->
+    <div class="container">
+        <!-- Header 導航區 -->
+        <header>
+            <div class="brand">
+                <h1>long.architecture studio</h1>
+                <p>巃.建築設計事務所</p>
             </div>
-            
-            <!-- 手機導航按鈕 (優化樣式) -->
-            <button id="menu-btn" class="md:hidden text-dark text-xl p-2 rounded-full hover:bg-gray-100 transition-custom">
-                <i class="fa fa-bars"></i>
-            </button>
-        </div>
-        
-        <!-- 手機導航菜單 -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100">
-            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
-                <a href="#home" class="py-2 px-3 text-dark hover:bg-primary/5 hover:text-accent rounded-lg transition-custom">首頁</a>
-                <a href="#portfolio" class="py-2 px-3 text-dark hover:bg-primary/5 hover:text-accent rounded-lg transition-custom">作品展示</a>
-                <a href="#about" class="py-2 px-3 text-dark hover:bg-primary/5 hover:text-accent rounded-lg transition-custom">關於我們</a>
-                <a href="#contact" class="py-2 px-3 text-dark hover:bg-primary/5 hover:text-accent rounded-lg transition-custom">聯繫我們</a>
-            </div>
-        </div>
-    </nav>
+            <nav>
+                <ul>
+                    <li><a href="#projects">projects</a></li>
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#ai-lab">ai lab</a></li>
+                    <li><a href="#contact">contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- 首頁英雄區 (優化視覺效果) -->
-    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-primary/5 via-white to-neutral relative overflow-hidden">
-        <!-- 裝飾元素 -->
-        <div class="absolute top-20 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h1 class="text-[clamp(2.2rem,5vw,3.8rem)] font-display font-bold leading-tight mb-6">
-                        <span class="text-gradient">打造屬於你的</span><br>理想空間
-                    </h1>
-                    <p class="text-lg text-gray-700 mb-8 max-w-lg leading-relaxed">
-                        巃建築師事務所結合專業建築設計與AI智能技術，為你提供創新、實用且符合美感的空間規劃方案。
-                    </p>
-                    <a href="#portfolio" class="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg shadow-custom hover:shadow-hover transition-custom">
-                        開始設計 <i class="fa fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                <div class="md:w-1/2">
-                    <!-- 優化圖片展示效果 -->
-                    <img src="https://picsum.photos/id/1048/800/600" alt="建築設計展示" class="rounded-xl shadow-xl w-full h-auto object-cover scale-hover">
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Hero Section 視覺首頁 -->
+        <section class="hero">
+            <img src="https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?q=80&w=1974&auto=format&fit=crop" alt="建築空間攝影">
+        </section>
 
-    <!-- 作品展示區 (新增區塊) -->
-    <section id="portfolio" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-display font-bold text-primary mb-4">
-                    作品展示
-                </h2>
-                <p class="text-gray-700 max-w-2xl mx-auto text-lg">
-                    探索我們的設計作品，見證空間與美學的完美結合
-                </p>
-                <!-- 裝飾線 -->
-                <div class="w-20 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
-            </div>
-            
-            <!-- 作品網格 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 作品項目 1 -->
-                <div class="group rounded-xl overflow-hidden shadow-custom scale-hover">
-                    <div class="relative overflow-hidden">
-                        <img src="https://picsum.photos/id/1067/800/600" alt="現代住宅設計" class="w-full h-64 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex items-end">
-                            <div class="p-6 text-white">
-                                <p class="text-sm text-accent mb-1">住宅空間</p>
-                                <h3 class="text-xl font-semibold">現代簡約住宅</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-white">
-                        <h3 class="text-xl font-semibold text-primary mb-2">現代簡約住宅</h3>
-                        <p class="text-gray-600 mb-4">結合自然採光與收納機能的現代風格住宅設計</p>
-                        <a href="#" class="inline-flex items-center text-accent font-medium hover:text-primary transition-custom">
-                            查看細節 <i class="fa fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
+        <!-- Projects 作品集區 -->
+        <section id="projects" class="projects">
+            <div class="project-grid">
+                <div class="project-item">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1953&auto=format&fit=crop" alt="清水模住宅">
+                    <p>清水模住宅, 台北</p>
                 </div>
-                
-                <!-- 作品項目 2 -->
-                <div class="group rounded-xl overflow-hidden shadow-custom scale-hover">
-                    <div class="relative overflow-hidden">
-                        <img src="https://picsum.photos/id/1073/800/600" alt="商業空間設計" class="w-full h-64 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex items-end">
-                            <div class="p-6 text-white">
-                                <p class="text-sm text-accent mb-1">商業空間</p>
-                                <h3 class="text-xl font-semibold">複合式商業空間</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-white">
-                        <h3 class="text-xl font-semibold text-primary mb-2">複合式商業空間</h3>
-                        <p class="text-gray-600 mb-4">兼具展示與體驗的複合式商業空間規劃</p>
-                        <a href="#" class="inline-flex items-center text-accent font-medium hover:text-primary transition-custom">
-                            查看細節 <i class="fa fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
+                <div class="project-item">
+                    <img src="https://images.unsplash.com/photo-1618788372246-79faff0c3742?q=80&w=1935&auto=format&fit=crop" alt="極簡商業空間">
+                    <p>極簡商業空間, 台中</p>
                 </div>
-                
-                <!-- 作品項目 3 -->
-                <div class="group rounded-xl overflow-hidden shadow-custom scale-hover">
-                    <div class="relative overflow-hidden">
-                        <img src="https://picsum.photos/id/1082/800/600" alt="辦公室設計" class="w-full h-64 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex items-end">
-                            <div class="p-6 text-white">
-                                <p class="text-sm text-accent mb-1">辦公空間</p>
-                                <h3 class="text-xl font-semibold">開放式辦公室</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-white">
-                        <h3 class="text-xl font-semibold text-primary mb-2">開放式辦公室</h3>
-                        <p class="text-gray-600 mb-4">促進團隊合作與創意交流的辦公空間設計</p>
-                        <a href="#" class="inline-flex items-center text-accent font-medium hover:text-primary transition-custom">
-                            查看細節 <i class="fa fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
+                <div class="project-item">
+                    <img src="https://images.unsplash.com/photo-1596443686489-5152e883283c?q=80&w=1974&auto=format&fit=crop" alt="海邊別墅">
+                    <p>海邊別墅, 墾丁</p>
                 </div>
-                
-                <!-- 作品項目 4 -->
-                <div class="group rounded-xl overflow-hidden shadow-custom scale-hover">
-                    <div class="relative overflow-hidden">
-                        <img src="https://picsum.photos/id/1048/800/600" alt="別墅設計" class="w-full h-64 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex items-end">
-                            <div class="p-6 text-white">
-                                <p class="text-sm text-accent mb-1">豪宅別墅</p>
-                                <h3 class="text-xl font-semibold">景觀別墅設計</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-white">
-                        <h3 class="text-xl font-semibold text-primary mb-2">景觀別墅設計</h3>
-                        <p class="text-gray-600 mb-4">融合自然景觀與現代建築的頂級別墅規劃</p>
-                        <a href="#" class="inline-flex items-center text-accent font-medium hover:text-primary transition-custom">
-                            查看細節 <i class="fa fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 作品項目 5 -->
-                <div class="group rounded-xl overflow-hidden shadow-custom scale-hover">
-                    <div class="relative overflow-hidden">
-                        <img src="https://picsum.photos/id/1031/800/600" alt="老屋翻新" class="w-full h-64 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex items-end">
-                            <div class="p-6 text-white">
-                                <p class="text-sm text-accent mb-1">老屋翻新</p>
-                                <h3 class="text-xl font-semibold">老屋新生計畫</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-white">
-                        <h3 class="text-xl font-semibold text-primary mb-2">老屋新生計畫</h3>
-                        <p class="text-gray-600 mb-4">保留歷史韻味並賦予現代機能的老屋翻新</p>
-                        <a href="#" class="inline-flex items-center text-accent font-medium hover:text-primary transition-custom">
-                            查看細節 <i class="fa fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 作品項目 6 -->
-                <div class="group rounded-xl overflow-hidden shadow-custom scale-hover">
-                    <div class="relative overflow-hidden">
-                        <img src="https://picsum.photos/id/1057/800/600" alt="餐飲空間" class="w-full h-64 object-cover transition-custom group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex items-end">
-                            <div class="p-6 text-white">
-                                <p class="text-sm text-accent mb-1">餐飲空間</p>
-                                <h3 class="text-xl font-semibold">質感餐飲空間</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 bg-white">
-                        <h3 class="text-xl font-semibold text-primary mb-2">質感餐飲空間</h3>
-                        <p class="text-gray-600 mb-4">營造獨特用餐體驗的現代餐飲空間設計</p>
-                        <a href="#" class="inline-flex items-center text-accent font-medium hover:text-primary transition-custom">
-                            查看細節 <i class="fa fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
+                <div class="project-item">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=1964&auto=format&fit=crop" alt="城市藝術館">
+                    <p>城市藝術館, 高雄</p>
                 </div>
             </div>
-            
-            <!-- 查看更多按鈕 -->
-            <div class="text-center mt-12">
-                <a href="#" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-3 px-8 rounded-lg transition-custom">
-                    查看更多作品 <i class="fa fa-th-large ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 關於我們 (優化視覺效果) -->
-    <section id="about" class="py-20 bg-primary/5">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-display font-bold text-primary mb-4">
-                    關於巃建築師事務所
-                </h2>
-                <p class="text-gray-700 max-w-2xl mx-auto text-lg">
-                    專注於創造兼具美感與功能性的空間設計
-                </p>
-                <div class="w-20 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
+        <!-- AI Lab 區塊 -->
+        <section id="ai-lab" class="ai-lab">
+            <div class="ai-content">
+                <h2>AI Design Lab</h2>
+                <p>Projecting the future of space through AI.<br>探索 AI 與空間美學的無限可能。</p>
+                <a href="#" class="ai-btn">Enter AI Lab</a>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-custom p-8 hover:shadow-hover scale-hover transition-custom">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="fa fa-trophy text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-display font-semibold mb-3 text-primary">專業團隊</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        擁有多年建築設計經驗的專業團隊，具備豐富的實務經驗與創新思維，每個項目都由資深建築師親自把關。
-                    </p>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-custom p-8 hover:shadow-hover scale-hover transition-custom">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="fa fa-lightbulb-o text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-display font-semibold mb-3 text-primary">創新設計</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        結合傳統建築美學與現代科技，打造獨特且實用的空間設計方案，注重細節與使用者體驗的平衡。
-                    </p>
-                </div>
-                
-                <div class="bg-white rounded-xl shadow-custom p-8 hover:shadow-hover scale-hover transition-custom">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="fa fa-heart text-primary text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-display font-semibold mb-3 text-primary">客製服務</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        以客戶需求為核心，提供全方位的客製化設計服務，從概念規劃到施工監造，全程陪伴直到專案完成。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 聯繫我們 (優化視覺效果) -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-display font-bold text-primary mb-4">
-                    聯繫我們
-                </h2>
-                <p class="text-gray-700 max-w-2xl mx-auto text-lg">
-                    如有任何問題或需求，歡迎隨時與我們聯繫
-                </p>
-                <div class="w-20 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-neutral rounded-xl p-8 shadow-custom">
-                    <h3 class="text-xl font-display font-semibold mb-6 text-primary">聯繫資訊</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa fa-map-marker text-primary text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-medium text-lg">地址</p>
-                                <p class="text-gray-700">台北市中山區建國北路一段123號5樓</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa fa-phone text-primary text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-medium text-lg">電話</p>
-                                <p class="text-gray-700">02-1234-5678</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa fa-envelope text-primary text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-medium text-lg">電子郵件</p>
-                                <p class="text-gray-700">contact@long-archi.com.tw</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa fa-clock-o text-primary text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="font-medium text-lg">營業時間</p>
-                                <p class="text-gray-700">週一至週五 9:00 - 18:00</p>
-                            </div>
-                        </div>
+        <!-- Footer 聯繫區 -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <div class="email">
+                        <p>Email: info@long-architecture.com</p>
                     </div>
-                    
-                    <!-- 社群媒體 -->
-                    <div class="mt-8">
-                        <p class="font-medium text-lg mb-4">追蹤我們</p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-custom">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-custom">
-                                <i class="fa fa-line"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-custom">
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-custom">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </div>
+                    <div class="address">
+                        <p>地址: 台北市大安區仁愛路四段126號15樓</p>
                     </div>
                 </div>
-                
-                <div class="bg-neutral rounded-xl p-8 shadow-custom">
-                    <h3 class="text-xl font-display font-semibold mb-6 text-primary">傳送訊息</h3>
-                    <form class="space-y-6">
-                        <div>
-                            <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-2">姓名</label>
-                            <input type="text" id="contact-name" name="contact-name"
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-custom bg-white">
-                        </div>
-                        
-                        <div>
-                            <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-2">電子郵件</label>
-                            <input type="email" id="contact-email" name="contact-email"
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-custom bg-white">
-                        </div>
-                        
-                        <div>
-                            <label for="contact-subject" class="block text-sm font-medium text-gray-700 mb-2">諮詢主題</label>
-                            <select id="contact-subject" name="contact-subject"
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-custom bg-white">
-                                <option value="">請選擇諮詢主題</option>
-                                <option value="residential">住宅設計諮詢</option>
-                                <option value="commercial">商業空間設計</option>
-                                <option value="renovation">老屋翻新諮詢</option>
-                                <option value="other">其他諮詢</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-2">訊息</label>
-                            <textarea id="contact-message" name="contact-message" rows="4"
-                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-custom bg-white"
-                                placeholder="請輸入你的問題或建議..."></textarea>
-                        </div>
-                        
-                        <button type="submit"
-                            class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg shadow-custom hover:shadow-hover transition-custom">
-                            發送訊息 <i class="fa fa-paper-plane ml-2"></i>
-                        </button>
-                    </form>
+                <div class="copyright">
+                    <p>© 2025 long.architecture studio 巃.建築設計事務所. All rights reserved.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 頁尾 (優化設計) -->
-    <footer class="bg-primary text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <p class="font-display text-2xl font-bold mb-4">巃建築師事務所</p>
-                    <p class="text-white/70 mb-6 leading-relaxed">
-                        創造兼具美感與功能性的空間設計，<br>讓每個空間都能展現獨特的價值。
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-white/70 hover:text-white transition-custom"><i class="fa fa-facebook-square text-xl"></i></a>
-                        <a href="#" class="text-white/70 hover:text-white transition-custom"><i class="fa fa-line text-xl"></i></a>
-                        <a href="#" class="text-white/70 hover:text-white transition-custom"><i class="fa fa-instagram text-xl"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">快速連結</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-white/70 hover:text-white transition-custom">首頁</a></li>
-                        <li><a href="#portfolio" class="text-white/70 hover:text-white transition-custom">作品展示</a></li>
-                        <li><a href="#about" class="text-white/70 hover:text-white transition-custom">關於我們</a></li>
-                        <li><a href="#contact" class="text-white/70 hover:text-white transition-custom">聯繫我們</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">聯繫資訊</h4>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-white/70">
-                            <i class="fa fa-map-marker mr-3"></i>
-                            <span>台北市中山區建國北路一段123號5樓</span>
-                        </li>
-                        <li class="flex items-center text-white/70">
-                            <i class="fa fa-phone mr-3"></i>
-                            <span>02-1234-5678</span>
-                        </li>
-                        <li class="flex items-center text-white/70">
-                            <i class="fa fa-envelope mr-3"></i>
-                            <span>contact@long-archi.com.tw</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-white/20 pt-8 text-center text-white/50 text-sm">
-                <p>© 2025 巃建築師事務所 版權所有 | 設計與維護 by 專業網站團隊</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // 導航欄滾動效果 (優化)
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('py-2', 'shadow-md', 'bg-white/98');
-                navbar.classList.remove('py-3');
-            } else {
-                navbar.classList.add('py-3');
-                navbar.classList.remove('py-2', 'shadow-md', 'bg-white/98');
-            }
-        });
-
-        // 手機導航菜單切換
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-            const icon = menuBtn.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.replace('fa-bars', 'fa-times');
-            } else {
-                icon.classList.replace('fa-times', 'fa-bars');
-            }
-        });
-
-        // 平滑滾動 (優化)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                // 關閉手機菜單
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
-                }
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // 滾動動畫效果
-        window.addEventListener('DOMContentLoaded', () => {
-            // 可以添加滾動時的漸入效果
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-                        entry.target.classList.remove('opacity-0', 'translate-y-8');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            // 觀察所有主要區塊
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.add('opacity-0', 'translate-y-8', 'transition-custom', 'duration-700');
-                observer.observe(section);
-            });
-        });
-    </script>
+        </footer>
+    </div>
 </body>
 </html>
-            
-            
